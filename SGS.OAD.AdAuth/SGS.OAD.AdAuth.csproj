@@ -4,10 +4,35 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+
+    <!-- NuGet Package Metadata -->
+    <PackageId>SGS.OAD.AdAuth</PackageId>
+    <Version>1.0.0</Version>
+    <Authors>Brian</Authors>
+    <Owners>OAD</Owners>
+    <Company>SGS Taiwan Ltd.</Company>
+    <Description>SGS AD 驗證函式庫</Description>
+    <PackageIcon>icon.png</PackageIcon>
+    <IncludeContentInPack>true</IncludeContentInPack>
+    <ContentTargetFolders>content</ContentTargetFolders>
+    <PackageTags>SGS, AD, Auth</PackageTags>
+    <PackageProjectUrl>http://twoadcode:3000/brian_li/SGS.OAD.AdAuth</PackageProjectUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageCopyright>Copytight © 2024 SGS Taiwan Ltd.</PackageCopyright>
+    <PackageReadmeFile>readme.md</PackageReadmeFile>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="System.DirectoryServices.AccountManagement" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="icon.png">
+      <Pack>true</Pack>
+      <PackagePath />
+    </None>
+    <None Update="readme.md" Pack="true" PackagePath="\" />
   </ItemGroup>
 
 </Project>
