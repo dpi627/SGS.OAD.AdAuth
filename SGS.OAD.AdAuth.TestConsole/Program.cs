@@ -22,7 +22,7 @@ internal class Program
 
         // 驗證帳號密碼是否有效
         bool valid = AdAuthHelper.IsValid(uid, pwd);
-        Console.WriteLine(valid);
+        Console.WriteLine($"IsValid: {valid}\n");
 
         // 取得使用者資訊，會先驗證，如驗證無效取得 null
         AdInfoModel? info = AdAuthHelper.GetInfo(uid, pwd);
@@ -48,7 +48,7 @@ internal class Program
             if (value != null)
             {
                 if (sb.Length > 0) sb.AppendLine();
-                sb.Append($"\"{prop.Name}\":\"{value}\"");
+                sb.Append($"{prop.Name}: {value}");
             }
         }
 
