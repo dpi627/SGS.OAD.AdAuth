@@ -115,7 +115,9 @@ AdInfoModel? info = AdAuthHelper.GetInfo(UserID, Password);
 執行 `SGS.OAD.AdAuth.TestConsole` 應可進行測試，測試專案會優先抓取 `secret.json` 組態設定，這是較為安全的做法。如不習慣也可直接修改專案中的 `appsettings.json` (較不建議)
 
 # 📝TODO
-- 嘗試縮短 LDAP 檢查時間，目前太久
+
+- 支援 DI
+- 當域名錯誤或不存在時，嘗試縮短 LDAP 檢查時間
 - 考慮導入 LOG
 - Exception 處理
 - 測試 .NET Framework 相容
