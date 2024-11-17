@@ -1,5 +1,6 @@
 ![](https://img.shields.io/badge/SGS-OAD-orange) 
 ![](https://img.shields.io/badge/proj-Active%20Directory%20Authentication-purple) 
+![](https://img.shields.io/badge/-6-512BD4?logo=dotnet)
 ![](https://img.shields.io/badge/-8-512BD4?logo=dotnet)
 ![](https://img.shields.io/badge/-NuGet-004880?logo=nuget)
 ![](https://img.shields.io/badge/-Git-666?logo=git)
