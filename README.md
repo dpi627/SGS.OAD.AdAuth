@@ -6,6 +6,8 @@
 ![](https://img.shields.io/badge/-GitHub-666?logo=github)
 ![](https://img.shields.io/badge/-Gitea-666?logo=gitea)
 
+![](./asset/icon.png)
+
 # 📦SGS.OAD.AdAuth
 
 - SGS AD 驗證通用函式庫
