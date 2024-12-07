@@ -11,7 +11,7 @@
 
     <!-- NuGet Package Metadata -->
     <PackageId>SGS.OAD.AdAuth</PackageId>
-    <Version>24.12.0</Version>
+    <Version>24.12.1</Version>
     <Authors>Brian</Authors>
     <Owners>OAD</Owners>
     <Company>SGS Taiwan Ltd.</Company>
