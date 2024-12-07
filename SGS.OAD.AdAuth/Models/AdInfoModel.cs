@@ -1,4 +1,4 @@
-﻿namespace SGS.OAD.AdAuth.Models;
+﻿namespace SGS.OAD.AdAuth;
 
 /// <summary>
 /// 用於儲存 AD 使用者資訊

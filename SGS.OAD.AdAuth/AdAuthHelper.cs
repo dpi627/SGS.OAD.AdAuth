@@ -1,5 +1,4 @@
-﻿using SGS.OAD.AdAuth.Models;
-using System.DirectoryServices.AccountManagement;
+﻿using System.DirectoryServices.AccountManagement;
 
 namespace SGS.OAD.AdAuth;
 

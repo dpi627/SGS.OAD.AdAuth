@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net6.0;net8.0</TargetFrameworks>
+    <TargetFrameworks>net461;net472;net481;netstandard2.0;net6.0;net8.0</TargetFrameworks>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
@@ -11,7 +11,7 @@
 
     <!-- NuGet Package Metadata -->
     <PackageId>SGS.OAD.AdAuth</PackageId>
-    <Version>1.0.3</Version>
+    <Version>24.12.0</Version>
     <Authors>Brian</Authors>
     <Owners>OAD</Owners>
     <Company>SGS Taiwan Ltd.</Company>
@@ -20,7 +20,7 @@
     <IncludeContentInPack>true</IncludeContentInPack>
     <ContentTargetFolders>content</ContentTargetFolders>
     <PackageTags>SGS, AD, Auth</PackageTags>
-    <PackageProjectUrl>http://twvoadtpw100004/brian_li/SGS.OAD.AdAuth</PackageProjectUrl>
+    <PackageProjectUrl>http://twvoadtpw100004.apac.global.sgs.com/brian_li/SGS.OAD.AdAuth</PackageProjectUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageCopyright>Copytight © 2024 SGS Taiwan Ltd.</PackageCopyright>
     <PackageReadmeFile>readme.md</PackageReadmeFile>
