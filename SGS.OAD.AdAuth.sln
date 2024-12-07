@@ -5,7 +5,9 @@ VisualStudioVersion = 17.10.35027.167
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SGS.OAD.AdAuth", "SGS.OAD.AdAuth\SGS.OAD.AdAuth.csproj", "{EF084EC3-FCF6-474D-BEB4-67CAB750ED3F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SGS.OAD.AdAuth.TestConsole", "SGS.OAD.AdAuth.TestConsole\SGS.OAD.AdAuth.TestConsole.csproj", "{DC8DB5D2-CA43-4E01-963F-7D29548050FE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Console8", "SGS.OAD.AdAuth.TestConsole\Console8.csproj", "{DC8DB5D2-CA43-4E01-963F-7D29548050FE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Console48", "Console48\Console48.csproj", "{A4024CDC-5478-4546-9DD3-5D6637F0A9FD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{DC8DB5D2-CA43-4E01-963F-7D29548050FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DC8DB5D2-CA43-4E01-963F-7D29548050FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DC8DB5D2-CA43-4E01-963F-7D29548050FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A4024CDC-5478-4546-9DD3-5D6637F0A9FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4024CDC-5478-4546-9DD3-5D6637F0A9FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4024CDC-5478-4546-9DD3-5D6637F0A9FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4024CDC-5478-4546-9DD3-5D6637F0A9FD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

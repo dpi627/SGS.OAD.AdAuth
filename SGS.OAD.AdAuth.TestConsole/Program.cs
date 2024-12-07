@@ -1,5 +1,4 @@
 ﻿using Microsoft.Extensions.Configuration;
-using SGS.OAD.AdAuth.Models;
 using System.Reflection;
 using System.Text;
 
@@ -40,7 +39,7 @@ internal class Program
     public static string Serialize<T>(T model)
     {
         var sb = new StringBuilder();
-        var properties = model.GetType().GetProperties(BindingFlags.Public | BindingFlags.Instance);
+        var properties = model!.GetType().GetProperties(BindingFlags.Public | BindingFlags.Instance);
 
         foreach (var prop in properties)
         {
