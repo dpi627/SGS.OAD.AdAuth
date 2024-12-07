@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net461;net472;net481;netstandard2.0;net6.0;net8.0</TargetFrameworks>
+    <TargetFrameworks>net472;net481;netstandard2.0;net6.0;net8.0</TargetFrameworks>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
@@ -11,7 +11,7 @@
 
     <!-- NuGet Package Metadata -->
     <PackageId>SGS.OAD.AdAuth</PackageId>
-    <Version>24.12.1</Version>
+    <Version>24.12.2</Version>
     <Authors>Brian</Authors>
     <Owners>OAD</Owners>
     <Company>SGS Taiwan Ltd.</Company>
