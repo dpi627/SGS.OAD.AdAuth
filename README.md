@@ -80,13 +80,12 @@ Install-Package SGS.OAD.AdAuth
 
 ```cs
 using SGS.OAD.AdAuth;
-using SGS.OAD.AdAuth.Models; //如只需驗證可不用
 
 //使用帳號密碼，取得驗證結果(布林值)
 bool valid = AdAuthHelper.IsValid(UserID, Password);
 
 //取得使用者常用資訊，會先進行驗證，成功才會取出
-AdInfoModel? info = AdAuthHelper.GetInfo(UserID, Password);
+AdInfoModel info = AdAuthHelper.GetInfo(UserID, Password);
 ```
 
 ## 執行結果參考
