@@ -47,4 +47,22 @@ public class AdAuthHelper
             EmailAddress = user.EmailAddress
         };
     }
+
+    public static async Task<bool> IsValidAsync(string UserId, string Password, string Domain = "APAC", CancellationToken cancellationToken = default)
+    {
+        return await Task.Run(() =>
+        {
+            cancellationToken.ThrowIfCancellationRequested();
+            return IsValid(UserId, Password, Domain);
+        }, cancellationToken);
+    }
+
+    public static async Task<AdInfoModel?> GetInfoAsync(string UserId, string Password, string Domain = "APAC", CancellationToken cancellationToken = default)
+    {
+        return await Task.Run(() =>
+        {
+            cancellationToken.ThrowIfCancellationRequested();
+            return GetInfo(UserId, Password, Domain);
+        }, cancellationToken);
+    }
 }
