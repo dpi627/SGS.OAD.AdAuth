@@ -11,7 +11,7 @@
 
     <!-- NuGet Package Metadata -->
     <PackageId>SGS.OAD.AdAuth</PackageId>
-    <Version>24.12.19</Version>
+    <Version>24.12.20</Version>
     <Authors>Brian</Authors>
     <Owners>OAD</Owners>
     <Company>SGS Taiwan Ltd.</Company>
@@ -28,8 +28,17 @@
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
 
-  <ItemGroup>
+    <!-- PackageReference for System.Data.SqlClient for .NET Framework -->
+  <ItemGroup Condition="'$(TargetFramework)' == 'net472' OR '$(TargetFramework)' == 'net481'">
     <PackageReference Include="System.Data.SqlClient" Version="4.9.0" />
+  </ItemGroup>
+
+  <!-- PackageReference for Microsoft.Data.SqlClient for .NET 6 and .NET 8 -->
+  <ItemGroup Condition="'$(TargetFramework)' == 'net6.0' OR '$(TargetFramework)' == 'net8.0'">
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="5.2.2" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="System.DirectoryServices.AccountManagement" Version="8.0.0" />
   </ItemGroup>
 
@@ -37,5 +46,19 @@
     <None Include="icon.png" Pack="true" PackagePath="\" />
     <None Include="readme.md" Pack="true" PackagePath="\" />
   </ItemGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)' == 'net472'">
+    <DefineConstants>NET472</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(TargetFramework)' == 'net481'">
+    <DefineConstants>NET48</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(TargetFramework)' == 'net6.0'">
+    <DefineConstants>NET6_0</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(TargetFramework)' == 'net8.0'">
+    <DefineConstants>NET8_0</DefineConstants>
+  </PropertyGroup>
+
 
 </Project>

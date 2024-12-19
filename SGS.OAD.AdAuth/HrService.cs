@@ -1,4 +1,8 @@
-﻿using System.Data.SqlClient;
+﻿#if NET472 || NET48
+using System.Data.SqlClient;
+#else
+using Microsoft.Data.SqlClient;
+#endif
 
 namespace SGS.OAD.AdAuth
 {

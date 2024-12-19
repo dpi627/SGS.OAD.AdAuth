@@ -35,12 +35,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="SGS.OAD.AdAuth, Version=24.12.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\SGS.OAD.AdAuth.24.12.1\lib\net472\SGS.OAD.AdAuth.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="SGS.OAD.AdAuth, Version=24.12.20.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SGS.OAD.AdAuth.24.12.20\lib\net472\SGS.OAD.AdAuth.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.SqlClient, Version=4.6.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SqlClient.4.9.0\lib\net462\System.Data.SqlClient.dll</HintPath>
+    </Reference>
     <Reference Include="System.DirectoryServices.AccountManagement" />
     <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
