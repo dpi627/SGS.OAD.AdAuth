@@ -18,6 +18,25 @@ public class AdAuthHelper
     }
 
     /// <summary>
+    /// 取得員工編號
+    /// 如果系統本身已經可取得AD帳號，可直接呼叫此方法
+    /// </summary>
+    /// <param name="ConnectionString">外部員工資料連線字串</param>
+    /// <param name="AdAccount">AD帳號</param>
+    /// <returns>員工編號</returns>
+    public static string? GetEmpId(string ConnectionString, string AdAccount)
+    {
+        try
+        {
+            return new HrService(ConnectionString).GetStaffCode(AdAccount);
+        }
+        catch
+        {
+            return null;
+        }
+    }
+
+    /// <summary>
     /// 取得使用者資訊
     /// </summary>
     /// <param name="UserId">帳號</param>
@@ -41,7 +60,7 @@ public class AdAuthHelper
 
         // 如有提供外部資料連截，工號改由外部連結取得
         if (ConnectionString != default)
-            user.EmployeeId = new HrService(ConnectionString).GetStaffCode(UserId);
+            user.EmployeeId = GetEmpId(ConnectionString, user.Name);
 
         return new AdInfoModel() {
             Enabled = user.Enabled,
