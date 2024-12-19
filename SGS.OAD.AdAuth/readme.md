@@ -41,3 +41,16 @@ AdInfoModel info = AdAuthHelper.GetInfo(UserID, Password);
 var valid = AdAuthHelper.IsValid(uid, pwd, "YourDomain");
 var info = AdAuthHelper.GetInfo(uid, pwd, "YourDomain");
 ```
+
+## 🚨工號異常處理
+
+```csharp
+AdInfoModel? info = AdAuthHelper.GetInfo(
+	userId, 
+	password, 
+	connectionString: "YourConnectionString"
+	);
+```
+
+- 傳入外部資料連結 (現為 IT 提供 HR 資料來源)
+- 非必填，如未提供會顯示原始 AD 資料 (可能是錯的)

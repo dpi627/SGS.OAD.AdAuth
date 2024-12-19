@@ -23,8 +23,9 @@ public class AdAuthHelper
     /// <param name="UserId">帳號</param>
     /// <param name="Password">密碼</param>
     /// <param name="Domain">AD域名</param>
+    /// <param name="ConnectionString">外部資料連線</param>
     /// <returns></returns>
-    public static AdInfoModel? GetInfo(string UserId, string Password, string Domain = "APAC")
+    public static AdInfoModel? GetInfo(string UserId, string Password, string Domain = "APAC", string? ConnectionString = null)
     {
         using PrincipalContext context = new(ContextType.Domain, Domain);
 
@@ -37,6 +38,10 @@ public class AdAuthHelper
 
         if (user == null)
             return null;
+
+        // 如有提供外部資料連截，工號改由外部連結取得
+        if (ConnectionString != default)
+            user.EmployeeId = new HrService(ConnectionString).GetStaffCode(UserId);
 
         return new AdInfoModel() {
             Enabled = user.Enabled,
