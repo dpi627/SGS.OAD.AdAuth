@@ -24,16 +24,9 @@ public class AdAuthHelper
     /// <param name="ConnectionString">外部員工資料連線字串</param>
     /// <param name="AdAccount">AD帳號</param>
     /// <returns>員工編號</returns>
-    public static string? GetEmpId(string ConnectionString, string AdAccount)
+    public static string GetEmpId(string ConnectionString, string AdAccount)
     {
-        try
-        {
-            return new HrService(ConnectionString).GetStaffCode(AdAccount);
-        }
-        catch
-        {
-            return null;
-        }
+        return new HrService(ConnectionString).GetStaffCode(AdAccount);
     }
 
     /// <summary>
@@ -62,7 +55,8 @@ public class AdAuthHelper
         if (ConnectionString != default)
             user.EmployeeId = GetEmpId(ConnectionString, user.Name);
 
-        return new AdInfoModel() {
+        return new AdInfoModel()
+        {
             Enabled = user.Enabled,
             Name = user.Name,
             EmployeeId = user.EmployeeId,

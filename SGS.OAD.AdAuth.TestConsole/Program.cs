@@ -39,6 +39,8 @@ internal class Program
             ConnectionString: connectionString
             );
 
+        Console.WriteLine($"EmpId: {AdAuthHelper.GetEmpId(connectionString, info.Name)}{Environment.NewLine}");
+
         if (info != null)
             Console.WriteLine(Serialize<AdInfoModel>(info));
         else
