@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Configuration;
+using SGS.OAD.DB;
 using System.Reflection;
 using System.Text;
 
@@ -23,8 +24,20 @@ internal class Program
         bool valid = AdAuthHelper.IsValid(uid, pwd);
         Console.WriteLine($"IsValid: {valid}\n");
 
+        var connectionString = DbInfoBuilder
+                .Init()
+                .SetServer("APSE-IDB029")
+                .SetDatabase("HR_DataSharing")
+                .SetAppName("AdAuthTest")
+                .Build()
+                .ConnectionString;
+
         // 取得使用者資訊，會先驗證，如驗證無效取得 null
-        AdInfoModel? info = AdAuthHelper.GetInfo(uid, pwd);
+        AdInfoModel? info = AdAuthHelper.GetInfo(
+            uid,
+            pwd,
+            ConnectionString: connectionString
+            );
 
         if (info != null)
             Console.WriteLine(Serialize<AdInfoModel>(info));
