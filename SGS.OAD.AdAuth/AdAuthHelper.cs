@@ -75,12 +75,29 @@ public class AdAuthHelper
         }, cancellationToken);
     }
 
-    public static async Task<AdInfoModel?> GetInfoAsync(string UserId, string Password, string Domain = "APAC", CancellationToken cancellationToken = default)
+    public static async Task<AdInfoModel?> GetInfoAsync(
+        string UserId,
+        string Password,
+        string Domain = "APAC",
+        string? ConnectionString = default,
+        CancellationToken cancellationToken = default)
     {
         return await Task.Run(() =>
         {
             cancellationToken.ThrowIfCancellationRequested();
-            return GetInfo(UserId, Password, Domain);
+            return GetInfo(UserId, Password, Domain, ConnectionString);
+        }, cancellationToken);
+    }
+
+    public static async Task<string> GetEmpIdAsync(
+        string ConnectionString,
+        string AdAccount,
+        CancellationToken cancellationToken = default)
+    {
+        return await Task.Run(() =>
+        {
+            cancellationToken.ThrowIfCancellationRequested();
+            return GetEmpId(ConnectionString, AdAccount);
         }, cancellationToken);
     }
 }
