@@ -54,3 +54,12 @@ AdInfoModel? info = AdAuthHelper.GetInfo(
 
 - 傳入外部資料連結 (現為 IT 提供 HR 資料來源)
 - 非必填，如未提供會顯示原始 AD 資料 (可能是錯的)
+
+## 👤已知 AD 帳號取工號
+
+```csharp
+AdAuthHelper.GetEmpId("ConnectionString", "AdAccount")
+```
+
+- 如已知 AD 帳號 (專案本身已經有取得機制)，可使用上述方法取得工號
+- 外部資料連結同樣要自己傳入
