@@ -18,7 +18,11 @@ namespace SGS.OAD.AdAuth
         // 同步方法
         public string GetStaffCode(string adAccount)
         {
-            string query = "SELECT TOP 1 stf_code FROM Employee (nolock) WHERE ADAccount = @adAccount";
+            string query = @"
+                SELECT TOP 1 stf_code 
+                FROM Employee (nolock) 
+                WHERE ADAccount = @adAccount AND QUITDATE = 0
+            ";
             string? stfCode = null;
 
             using (SqlConnection connection = new SqlConnection(_connectionString))
