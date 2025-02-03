@@ -50,6 +50,12 @@ internal class Program
         var adId = "Nancy-Tw_Hu";
         var empNo = AdAuthHelper.GetEmpId(connectionString, adId);
         Console.WriteLine($"{Environment.NewLine}AdId: {adId}, EmpNo: {empNo}");
+
+        var hrInfo = AdAuthHelper.GetHrInfo(connectionString, adId);
+        if (hrInfo != null)
+            Console.WriteLine(Serialize<HrInfoModel>(hrInfo));
+        else
+            Console.WriteLine("查無資料");
     }
 
     #region other methods
