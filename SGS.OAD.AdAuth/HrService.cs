@@ -21,7 +21,7 @@ namespace SGS.OAD.AdAuth
             string query = @"
                 SELECT TOP 1 stf_code 
                 FROM Employee (nolock) 
-                WHERE ADAccount = @adAccount AND (QUITDATE = 0 OR QUITDATE >= @yyyymmdd)
+                WHERE ADAccount = @adAccount AND (QUITDATE = 0 OR QUITDATE >= @today)
             ";
             string? stfCode = null;
 
@@ -34,7 +34,7 @@ namespace SGS.OAD.AdAuth
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("@adAccount", adAccount);
-                        command.Parameters.AddWithValue("@yyyymmdd", DateTime.Now.ToString("yyyymmdd"));
+                        command.Parameters.AddWithValue("@today", DateTime.Now.ToString("yyyyMMdd"));
                         using (SqlDataReader reader = command.ExecuteReader())
                         {
                             if (reader.Read())
