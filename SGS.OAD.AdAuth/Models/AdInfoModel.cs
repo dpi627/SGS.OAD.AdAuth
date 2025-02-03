@@ -29,4 +29,8 @@ public class AdInfoModel
     /// 電子郵件
     /// </summary>
     public string? EmailAddress { get; set; }
+    /// <summary>
+    /// 中文姓名，取自HR資料(過渡時期使用)
+    /// </summary>
+    public string? CName { get; set; }
 }

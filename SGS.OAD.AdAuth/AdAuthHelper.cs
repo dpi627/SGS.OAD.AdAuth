@@ -26,7 +26,13 @@ public class AdAuthHelper
     /// <returns>員工編號</returns>
     public static string GetEmpId(string ConnectionString, string AdAccount)
     {
-        return new HrService(ConnectionString).GetStaffCode(AdAccount);
+        var hr = GetHrInfo(ConnectionString, AdAccount);
+        return hr?.stf_code ?? "";
+    }
+
+    public static HrInfoModel? GetHrInfo(string ConnectionString, string AdAccount)
+    {
+        return new HrService(ConnectionString).GetHrInfo(AdAccount);
     }
 
     /// <summary>
@@ -52,14 +58,19 @@ public class AdAuthHelper
             return null;
 
         // 如有提供外部資料連截，工號改由外部連結取得
+        //if (ConnectionString != default)
+        //    user.EmployeeId = GetEmpId(ConnectionString, user.Name);
+
+        var hr = new HrInfoModel();
         if (ConnectionString != default)
-            user.EmployeeId = GetEmpId(ConnectionString, user.Name);
+            hr = GetHrInfo(ConnectionString, user.Name);
 
         return new AdInfoModel()
         {
             Enabled = user.Enabled,
             Name = user.Name,
-            EmployeeId = user.EmployeeId,
+            CName = hr?.stf_cname,
+            EmployeeId = hr?.stf_code,
             DisplayName = user.DisplayName,
             Description = user.Description,
             EmailAddress = user.EmailAddress
