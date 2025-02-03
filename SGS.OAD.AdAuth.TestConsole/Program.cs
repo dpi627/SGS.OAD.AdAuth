@@ -45,6 +45,11 @@ internal class Program
             Console.WriteLine(Serialize<AdInfoModel>(info));
         else
             Console.WriteLine("查無資料");
+
+        // 單獨測試取得工號
+        var adId = "Nancy-Tw_Hu";
+        var empNo = AdAuthHelper.GetEmpId(connectionString, adId);
+        Console.WriteLine($"{Environment.NewLine}AdId: {adId}, EmpNo: {empNo}");
     }
 
     #region other methods
