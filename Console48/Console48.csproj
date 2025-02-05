@@ -35,8 +35,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="SGS.OAD.AdAuth, Version=24.12.20.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\SGS.OAD.AdAuth.24.12.20\lib\net472\SGS.OAD.AdAuth.dll</HintPath>
+    <Reference Include="SGS.OAD.AdAuth, Version=25.2.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SGS.OAD.AdAuth.25.2.5\lib\net472\SGS.OAD.AdAuth.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

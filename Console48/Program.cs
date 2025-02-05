@@ -5,7 +5,7 @@ namespace Console48
 {
     internal class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
             var isVaild = AdAuthHelper.IsValid("YourAdAccount", "YourAdPassword");
             Console.WriteLine($"{isVaild}");
