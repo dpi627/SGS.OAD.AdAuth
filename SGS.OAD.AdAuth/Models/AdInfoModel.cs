@@ -14,10 +14,6 @@ public class AdInfoModel
     /// </summary>
     public string? Name { get; set; }
     /// <summary>
-    /// 員工編號
-    /// </summary>
-    public string? EmployeeId { get; set; }
-    /// <summary>
     /// 顯示名稱，例如 Brian Li
     /// </summary>
     public string? DisplayName { get; set; }
@@ -29,8 +25,4 @@ public class AdInfoModel
     /// 電子郵件
     /// </summary>
     public string? EmailAddress { get; set; }
-    /// <summary>
-    /// 中文姓名，取自HR資料(過渡時期使用)
-    /// </summary>
-    public string? CName { get; set; }
 }
