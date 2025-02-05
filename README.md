@@ -88,34 +88,12 @@ bool valid = AdAuthHelper.IsValid(UserID, Password);
 AdInfoModel info = AdAuthHelper.GetInfo(UserID, Password);
 ```
 
-### 執行結果參考
+## 🚨工號
 
-![](asset/test-result.png)
+- `2024-12-19` 台灣工號資料異常，有進行修改
+- `2025-02-05` 移除工號相關修改，回歸 AD 驗證
 
-## 🚨工號異常處理
-
-```csharp
-AdInfoModel? info = AdAuthHelper.GetInfo(
-	userId, 
-	password, 
-	connectionString: "YourConnectionString"
-	);
-```
-
-- `2024-12-19` 公司 AD 資料遭到複寫，無法取得正確工號
-- 改由外部資料連結取得 (連結資料請洽主管，並建議使用 `SGS.OAD.DB` 套件)
-
-### 已知 AD 帳號取工號
-
-```csharp
-AdAuthHelper.GetEmpId("ConnectionString", "AdAccount")
-```
-
-- 如已知 AD 帳號 (專案本身已經有取得機制)，可使用上述方法取得工號
-- 外部資料連結同樣要自己傳入
-
-- 傳入外部資料連結 (現為 IT 提供 HR 資料來源)
-- 非必填，如未提供會顯示原始 AD 資料 (可能是錯的)
+HR 相關資訊，例如工號、部門、中文姓名等等，請改用套件 `SGS.OAD.HrInfo`
 
 # 🧪使用測試專案
 
