@@ -22,7 +22,6 @@
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="8.0.0" />
     <PackageReference Include="SGS.OAD.AdAuth" Version="25.2.5" />
-    <PackageReference Include="SGS.OAD.DB" Version="24.11.1" />
   </ItemGroup>
 
 </Project>
