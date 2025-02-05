@@ -10,29 +10,11 @@ public class AdAuthHelper
     /// <param name="UserId">帳號</param>
     /// <param name="Password">密碼</param>
     /// <param name="Domain">AD域名</param>
-    /// <returns></returns>
+    /// <returns>如果帳號密碼正確，返回 true，否則返回 false</returns>
     public static bool IsValid(string UserId, string Password, string Domain = "APAC")
     {
         using PrincipalContext context = new(ContextType.Domain, Domain);
         return context.ValidateCredentials(UserId, Password);
-    }
-
-    /// <summary>
-    /// 取得員工編號
-    /// 如果系統本身已經可取得AD帳號，可直接呼叫此方法
-    /// </summary>
-    /// <param name="ConnectionString">外部員工資料連線字串</param>
-    /// <param name="AdAccount">AD帳號</param>
-    /// <returns>員工編號</returns>
-    public static string GetEmpId(string ConnectionString, string AdAccount)
-    {
-        var hr = GetHrInfo(ConnectionString, AdAccount);
-        return hr?.stf_code ?? "";
-    }
-
-    public static HrInfoModel? GetHrInfo(string ConnectionString, string AdAccount)
-    {
-        return new HrService(ConnectionString).GetHrInfo(AdAccount);
     }
 
     /// <summary>
@@ -41,15 +23,12 @@ public class AdAuthHelper
     /// <param name="UserId">帳號</param>
     /// <param name="Password">密碼</param>
     /// <param name="Domain">AD域名</param>
-    /// <param name="ConnectionString">外部資料連線</param>
-    /// <returns></returns>
-    public static AdInfoModel? GetInfo(string UserId, string Password, string Domain = "APAC", string? ConnectionString = null)
+    /// <returns>如果帳號密碼正確，返回 AdInfoModel 物件，否則返回 null</returns>
+    public static AdInfoModel? GetInfo(string UserId, string Password, string Domain = "APAC")
     {
         using PrincipalContext context = new(ContextType.Domain, Domain);
 
-        bool vaild = context.ValidateCredentials(UserId, Password);
-
-        if (!vaild)
+        if (!context.ValidateCredentials(UserId, Password))
             return null;
 
         UserPrincipal user = UserPrincipal.FindByIdentity(context, UserId);
@@ -57,26 +36,24 @@ public class AdAuthHelper
         if (user == null)
             return null;
 
-        // 如有提供外部資料連截，工號改由外部連結取得
-        //if (ConnectionString != default)
-        //    user.EmployeeId = GetEmpId(ConnectionString, user.Name);
-
-        var hr = new HrInfoModel();
-        if (ConnectionString != default)
-            hr = GetHrInfo(ConnectionString, user.Name);
-
         return new AdInfoModel()
         {
             Enabled = user.Enabled,
             Name = user.Name,
-            CName = hr?.stf_cname,
-            EmployeeId = hr?.stf_code,
             DisplayName = user.DisplayName,
             Description = user.Description,
             EmailAddress = user.EmailAddress
         };
     }
 
+    /// <summary>
+    /// 非同步驗證使用者帳號密碼是否正確
+    /// </summary>
+    /// <param name="UserId">帳號</param>
+    /// <param name="Password">密碼</param>
+    /// <param name="Domain">AD域名</param>
+    /// <param name="cancellationToken">取消操作的標記</param>
+    /// <returns>如果帳號密碼正確，返回 true，否則返回 false</returns>
     public static async Task<bool> IsValidAsync(string UserId, string Password, string Domain = "APAC", CancellationToken cancellationToken = default)
     {
         return await Task.Run(() =>
@@ -86,29 +63,20 @@ public class AdAuthHelper
         }, cancellationToken);
     }
 
-    public static async Task<AdInfoModel?> GetInfoAsync(
-        string UserId,
-        string Password,
-        string Domain = "APAC",
-        string? ConnectionString = default,
-        CancellationToken cancellationToken = default)
+    /// <summary>
+    /// 非同步取得使用者資訊
+    /// </summary>
+    /// <param name="UserId">帳號</param>
+    /// <param name="Password">密碼</param>
+    /// <param name="Domain">AD域名</param>
+    /// <param name="cancellationToken">取消操作的標記</param>
+    /// <returns>如果帳號密碼正確，返回 AdInfoModel 物件，否則返回 null</returns>
+    public static async Task<AdInfoModel?> GetInfoAsync(string UserId, string Password, string Domain = "APAC", CancellationToken cancellationToken = default)
     {
         return await Task.Run(() =>
         {
             cancellationToken.ThrowIfCancellationRequested();
-            return GetInfo(UserId, Password, Domain, ConnectionString);
-        }, cancellationToken);
-    }
-
-    public static async Task<string> GetEmpIdAsync(
-        string ConnectionString,
-        string AdAccount,
-        CancellationToken cancellationToken = default)
-    {
-        return await Task.Run(() =>
-        {
-            cancellationToken.ThrowIfCancellationRequested();
-            return GetEmpId(ConnectionString, AdAccount);
+            return GetInfo(UserId, Password, Domain);
         }, cancellationToken);
     }
 }
