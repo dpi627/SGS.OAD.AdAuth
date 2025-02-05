@@ -11,55 +11,40 @@
 
 以下說明套件使用方式
 
-## 🌳Using Namespace
+# 🌳Using Namespace
 
 ```csharp
 using SGS.OAD.AdAuth;
 ```
 
-## 🚀Quick Start
+# 🚀Quick Start
 
-基本驗證方式：輸入帳號密碼，取得驗證結果(布林值)
+輸入帳號密碼，取得驗證結果 (布林值)
 
 ```csharp
 bool isValid = AdAuthHelper.IsValid(UserID, Password);
 ```
 
-## 💼Extra AD Information
+# 💼Extra AD Information
 
-以下可取得常用 AD 資訊 (會先進行驗證，成功才會取出)
+取得常用 AD 資訊 (會先進行驗證，通過才會取出)
 
 ```csharp
 AdInfoModel info = AdAuthHelper.GetInfo(UserID, Password);
 ```
 
-## 🌐Specific AD Domain
+# 🌐Specific AD Domain
 
-預設 Domain 為 `APAC`，若要指定請使用下列方法
+預設 Domain 為 `APAC`，可自訂
 
 ```csharp
 var valid = AdAuthHelper.IsValid(uid, pwd, "YourDomain");
 var info = AdAuthHelper.GetInfo(uid, pwd, "YourDomain");
 ```
 
-## 🚨工號異常處理
+# 🚨工號
 
-```csharp
-AdInfoModel? info = AdAuthHelper.GetInfo(
-	userId, 
-	password, 
-	connectionString: "YourConnectionString"
-	);
-```
+- `2024-12-19` 台灣工號資料異常，有進行修改
+- `2025-02-05` 移除工號相關修改，回歸 AD 驗證
 
-- 傳入外部資料連結 (現為 IT 提供 HR 資料來源)
-- 非必填，如未提供會顯示原始 AD 資料 (可能是錯的)
-
-## 👤已知 AD 帳號取工號
-
-```csharp
-AdAuthHelper.GetEmpId("ConnectionString", "AdAccount")
-```
-
-- 如已知 AD 帳號 (專案本身已經有取得機制)，可使用上述方法取得工號
-- 外部資料連結同樣要自己傳入
+HR 相關資訊，例如工號、部門、中文姓名等等，請改用套件 `SGS.OAD.HrInfo`
