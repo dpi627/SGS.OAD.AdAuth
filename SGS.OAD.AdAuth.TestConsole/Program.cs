@@ -1,16 +1,15 @@
 ﻿using Microsoft.Extensions.Configuration;
-using SGS.OAD.DB;
 using System.Reflection;
 using System.Text;
 
-namespace SGS.OAD.AdAuth.TestConsole;
+namespace SGS.OAD.AdAuth.Console8;
 
 internal class Program
 {
     static void Main()
     {
-        Console.InputEncoding = System.Text.Encoding.UTF8;
-        Console.OutputEncoding = System.Text.Encoding.UTF8;
+        Console.InputEncoding = Encoding.UTF8;
+        Console.OutputEncoding = Encoding.UTF8;
 
         // 讀取組態檔
         IConfiguration config = new ConfigurationBuilder()
@@ -27,36 +26,11 @@ internal class Program
         bool valid = AdAuthHelper.IsValid(uid, pwd);
         Console.WriteLine($"IsValid: {valid}\n");
 
-        var connectionString = DbInfoBuilder
-                .Init()
-                .SetServer("APSE-IDB029")
-                .SetDatabase("HR_DataSharing")
-                .SetAppName("AdAuthTest")
-                .Build()
-                .ConnectionString;
-
         // 取得使用者資訊，會先驗證，如驗證無效取得 null
-        AdInfoModel? info = AdAuthHelper.GetInfo(
-            uid,
-            pwd,
-            ConnectionString: connectionString
-            );
-
-        Console.WriteLine($"EmpId: {AdAuthHelper.GetEmpId(connectionString, info.Name)}{Environment.NewLine}");
+        AdInfoModel? info = AdAuthHelper.GetInfo(uid, pwd);
 
         if (info != null)
-            Console.WriteLine(Serialize<AdInfoModel>(info));
-        else
-            Console.WriteLine("查無資料");
-
-        // 單獨測試取得工號
-        var adId = "Nancy-Tw_Hu";
-        var empNo = AdAuthHelper.GetEmpId(connectionString, adId);
-        Console.WriteLine($"{Environment.NewLine}AdId: {adId}, EmpNo: {empNo}");
-
-        var hrInfo = AdAuthHelper.GetHrInfo(connectionString, adId);
-        if (hrInfo != null)
-            Console.WriteLine(Serialize<HrInfoModel>(hrInfo));
+            Console.WriteLine(Serialize(info));
         else
             Console.WriteLine("查無資料");
     }
